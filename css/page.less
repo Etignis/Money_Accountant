@@ -1,0 +1,299 @@
+@padding: .2em;
+.wr{
+    background: @white;
+    .box-shadow(0,0,10px,3px,@m-gray);
+    display: table;
+}
+#wrap{
+    
+    .wr;
+    margin: 0 auto;
+}
+
+#header{
+    position: fixed;
+   // left: 0;
+    top: 0;
+   // width: 4*@col-width + 2*@col-width;
+    padding: 0;
+   // padding-left: 2*@col-width;
+    overflow: hidden;
+    border-bottom: solid 1px @m-gray;
+    background: rgba(200,200,200,.8);
+    z-index: 9;
+    .noselect;
+    &:before, &:after{
+        .clear;
+    }
+    
+    .h_title{
+        width: @col-width;
+        float: left;
+        padding: @padding;
+        text-align: right;
+    }
+    
+     #res_is, #res_free{
+        padding: @padding;
+        width: @col-width;
+        //margin-left: @col-width;
+        float: left;
+        min-height: 1em;   
+        position: relative;
+    }
+   
+}
+.month{
+    width: 6 * @col-width;
+    .m_name{
+        padding: @padding;
+        text-transform: uppercase;
+        .noselect;
+    }
+    .day{
+        background: rgba(130,176,190,.2); 
+        border-top: 1px dotted @color;
+        position: relative;
+        &:nth-child(odd){
+            background: rgba(83,70,100,.2);
+        }
+        
+        .day_toggle{
+            position: absolute;
+            width: 2em;
+            padding-left: 2em;
+            background: rgba(255,255,255,.1);
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 9;
+            .noselect;
+            &:hover{
+                padding: @padding;
+                background: rgba(255,255,255,.9);  
+                width: 2em;    
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        
+        .d_res{
+            overflow: auto;
+            text-align: right;
+            background: rgba(0,0,0,.2);
+            display: none;
+            .noselect;
+            //float: left;
+             &:before, &:after{
+                    .clear;
+                } 
+           
+            .d_date{
+                padding: @padding;
+                float: left;
+                width: 2 * @col-width;
+                text-align: left;
+            }
+            .d_r_in, .d_r_out, .d_r_in0, .d_r_out0{
+                padding: @padding;
+                width: @col-width;
+                //margin-left: @col-width;
+                float: left;
+                //font-weight: bold;
+                min-height: 1em;
+            }
+            .d_r_in{
+                color: @green;
+            }
+            .d_r_out{
+                color: @red;
+            }
+            .d_r_in0{
+                color: @green + #333;
+                //opacity: .3;
+            }
+            .d_r_out0{
+                color: @red + #777;
+                //opacity: .3;
+            }
+        }
+        
+    }
+    .m_res{
+        overflow: auto;
+        text-align: right;
+        .noselect;
+         &:before, &:after{
+                .clear;
+            } 
+        border-top: 1px solid @color;
+        margin-bottom: .3em;
+        padding-left: @col-width * 2;    
+        .m_r_in, .m_r_out, .m_r_in0, .m_r_out0{
+            padding: @padding;
+            width: @col-width;
+            //margin-left: @col-width;
+            float: left;
+            font-weight: bold;
+        }
+        .m_r_in{
+            color: @green;
+        }
+        .m_r_out{
+            color: @red;
+        }
+        .m_r_in0{
+            color: @green + #333;
+            //opacity: .3;
+        }
+        .m_r_out0{
+            color: @red + #777;
+            //opacity: .3;
+        }
+    }
+}
+#rows, #add{   
+    width: 6 * @col-width;
+    .row{
+        width: 6 * @col-width;
+        overflow: auto;
+        background: rgba(240,240,240,.3);
+        position: relative;
+        &:before, &:after{
+            .clear;
+        }  
+        
+        &:nth-child(even){
+            background: rgba(200,200,200,.3);
+        }
+        
+        &:hover{
+            background: rgba(250,250,250,.7);
+        } 
+        
+        
+        .del_p{
+            position: absolute;
+            width: 10px;
+            overflow: hidden;
+            right: 0;
+            top: 0;
+            padding-left: 12px;
+            .del_row{
+                margin: 0;
+                padding: 0 7px;
+            }
+            &:hover{
+                width: auto;
+            }
+        }
+        
+    }
+     .date{
+        positio: relative;
+    }
+    .date, .name, .in1, .in0, .out1, .out0, .col{
+        padding: @padding;
+        width: @col-width;
+        float: left;
+        min-height: 1.5em;  
+        .noselect;
+        
+        span{
+            display: none;
+        }
+        input{
+            width: 100%;
+            border: none;
+            padding: 0;
+        }
+        input[type=number]{
+            text-align: right;
+        }
+    }
+    .in1, .in0, .out1, .out0{
+        text-align: right;
+    }
+    .in1, .in0{
+        color: @green;
+    }
+    .out1, .out0{
+        color: @red;
+    }
+    .in0{
+       color: @green + #333; 
+    }
+    .out0{
+        color: @red + #555;
+    }
+}
+#rows{    
+    position: relative;
+    margin: 1.9em 0 0em 0;
+}
+#add{
+    border-top: 1px solid @m-gray;
+    background: @l-gray;
+}
+#b_add{
+    width: 100%;
+    text-align: center;
+    font-size: 140%;
+    font-weight: bold;
+    margin: 0;
+
+    &:disabled{
+        background: @m-gray + #222;
+    }
+}
+
+#result{
+    width: 6 * @col-width;
+    overflow: auto;
+    .noselect;
+    &:before, &:after{
+        .clear;
+    }    
+    /*
+    #res_is, #res_free{
+        padding: @padding;
+        width: @col-width;
+        margin-left: @col-width;
+        float: left;
+        min-height: 1em;   
+        position: relative;
+    }
+    #res_is{
+        &:before{
+            content: "Есть: ";
+            position: absolute;
+            top: @padding;
+            left: -@col-width;
+        }
+    }
+    #res_free{
+        &:before{
+            content: "Свободно: ";
+            position: absolute;
+            top: @padding;
+            left: -@col-width;
+        }
+    }*/
+}
+
+#add{
+    z-index: 19;
+    .row{
+        background: rgba(255,255,255,.6);
+        .date, .name, .in1, .in0, .out1, .out0{
+            &:hover{
+                  background: @white;
+            }
+        }
+    }
+}
+
+#ind{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
